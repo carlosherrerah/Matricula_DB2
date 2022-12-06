@@ -1,0 +1,18 @@
+alter session set "_ORACLE_SCRIPT"=true;
+
+drop user OracleFlix CASCADE;
+
+CREATE USER OracleFlix
+IDENTIFIED BY OracleFlix
+default tablespace users
+temporary tablespace temp
+quota unlimited on users;
+
+GRANT CONNECT, 
+      RESOURCE, 
+	  CREATE VIEW, 
+      CREATE SYNONYM
+ TO OracleFlix;
+
+grant create any index to OracleFlix;
+GRANT EXECUTE any PROCEDURE TO OracleFlix;

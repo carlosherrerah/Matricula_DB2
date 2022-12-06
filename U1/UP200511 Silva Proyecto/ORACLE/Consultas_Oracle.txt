@@ -1,0 +1,36 @@
+--SELECTS
+	--VIEW
+		SELECT * 
+		FROM title_unavail;
+
+	--TABLA DE ACTORES
+		SELECT * 
+    		FROM actors;
+
+	--TABLA DE CLIENTES
+    		SELECT * 
+    		FROM customers;
+
+	--TABLA DE MEDIA
+    		SELECT * 
+    		FROM media;
+
+	--TABLE DE PELICULAS
+    		SELECT * 
+    		FROM movies;
+
+	--TABLA DE HISTORIAL DE RENTA
+    		SELECT * 
+    		FROM rental_history;
+
+	--TABLA DE STAR_BILLING
+    		SELECT * 
+    		FROM star_billings;
+
+	--INDEX
+		SELECT * 
+    		FROM USER_INDEXES;
+	
+	--SYNONYM
+		SELECT * 
+    		FROM TU;

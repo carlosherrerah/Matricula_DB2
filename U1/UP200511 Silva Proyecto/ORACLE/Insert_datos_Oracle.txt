@@ -1,0 +1,150 @@
+--CREACION DE SECUANCIA
+	--SECUENCIA CUSTOMER
+		create sequence customer_id_seq
+    			INCREMENT by 1
+    			start with 101;
+    			
+	--SECUENCIA MOVIE
+		create sequence title_id_seq
+    			INCREMENT by 1
+    			start with 1;
+	--SECUENCIA MEDIA
+		create sequence media_id_seq
+    			INCREMENT by 1
+    			start with 92;
+    			
+	--SECUENCIA ACTOR
+		create sequence actor_id_seq
+    			increment by 1
+    			start with 1001;
+
+--INSERTAR DATOS
+	--DATOS DE CUSTOMERS
+		insert into customers 
+			values (customer_id_seq.nextval, 'Palombo', 'Lisa', '716-270-2669', '123 Main St', 'Buffalo', UPPER('NY'), 'palombo@ecc.edu', '716-555-1212');
+		insert into customers 
+			values (customer_id_seq.nextval, 'Lulu', 'Liz', '716-278-4569', '14 San Ge', 'Aguascalientes', upper('ag'), 'Lulu@ecc.edu', '456-555-1982');
+		insert into customers 
+			values (customer_id_seq.nextval, 'Polu', 'Lucho', '986-458-1119', '94 Lent Ls', 'Mexico', upper('ME'), 'Polu@ecc.eduu', '686-524-782');
+		insert into customers 
+			values (customer_id_seq.nextval, 'Rojas', 'Juan', '449-804-4717', '201 Peñuelas AGS', 'Aguascalientes', UPPER('ag'), 'juan@ecc.edu', '659-784-6589');
+		insert into customers 
+			values (customer_id_seq.nextval, 'Gallegos', 'Vivian', '449-887-9527', '265 Casa Solida AGS', 'Aguascalientes', upper('AG'), 'viv@ecc.edu', '548-798-6125');
+		insert into customers 
+			values (customer_id_seq.nextval, 'Gonzales', 'Israel', '789-567-9854', '658 Mexico AGS', 'Aguascalientes', upper('AG'), 'isra@ecc.edu', '58-998-6178');
+
+	--DATOS DE MOVIES
+		insert into movies
+			values(MOVIE_ID_SEQ.nextval, 'Remember the Titans', 'The true story of a newly appointed African-American 
+			coach and his high school team on their first season as a
+			racially integrated unit.', 'PG', 'DRAMA', TO_DATE('29/09/2000', 'dd/mm/yyyy') );
+		insert into movies
+			values(title_ID_SEQ.nextval, 'Black Adam','Dwayne Johnson brings the anti-hero Black Adam to the DC Extended Universe this fall.',
+			UPPER('PG13'), UPPER('action'), TO_DATE('20/10/2020', 'dd/mm/yyyy') );
+		insert into movies
+			values(title_ID_SEQ.nextval, '"Pennyworth"','Set against the colorful backdrop of 1960s London, "Pennyworth" explores the gritty origin story of Bruce Waynes legendary butler 
+			(and former bad ass British SAS soldier), Alfred Pennyworth.',
+			UPPER('PG13'), UPPER('action'), TO_DATE('15/04/2024', 'dd/mm/yyyy') );
+		insert into movies
+			values(title_ID_SEQ.nextval, '"Stargirl"','Were always excited when a new hero is added to the CWs pantheon and we loved seeing Stargirl become yet another addition to 
+			the ever-growing Arrowverse crossover events when the show premiered in 2020.',
+			UPPER('R'), UPPER('action'), TO_DATE('30/10/2028', 'dd/mm/yyyy') );
+		insert into movies
+			values(title_ID_SEQ.nextval, '"Stargirl"','Were always excited when a new hero is added to the CWs pantheon and we loved seeing Stargirl become yet another addition to 
+			the ever-growing Arrowverse crossover events when the show premiered in 2020.',
+			UPPER('R'), UPPER('action'), TO_DATE('30/10/2028', 'dd/mm/yyyy') );
+		insert into movies
+			values(title_ID_SEQ.nextval, '"The Sandman"','Neil Gaiman’s groundbreaking comic series "The Sandman" is finally coming to our screens, after having been thought of as "unadaptable" for decades. 
+			Fans are looking forward to a modern retelling of the source material ',
+			UPPER('pg'), UPPER('child'), TO_DATE('24/1/2020', 'dd/mm/yyyy') );
+		insert into movies
+			values(title_ID_SEQ.nextval, 'Black Panther: Wakanda Forever ','The much-anticipated sequel to 2018s Black Panther, and final film in Marvel Studios Phase 4, will be imbued with the spirit of Chadwick Boseman, 
+			as the story of Wakanda continues. ',
+			UPPER('pg13'), UPPER('action'), TO_DATE('11/11/2022', 'dd/mm/yyyy') );
+
+	--DATOS DE MEDIA
+		INSERT INTO media
+			VALUES (media_id_seq.nextval, upper('dvd'), 1);
+		INSERT INTO media
+			VALUES (media_id_seq.nextval, upper('vhs'), 1);
+			select * from rental_history;
+		INSERT INTO media
+			VALUES (media_id_seq.nextval, upper('dvd'), 2);
+		INSERT INTO media
+			VALUES (media_id_seq.nextval, upper('vhs'), 2);
+			select * from rental_history;		
+		INSERT INTO media
+			VALUES (media_id_seq.nextval, upper('dvd'), 3);
+		INSERT INTO media
+			VALUES (media_id_seq.nextval, upper('vhs'), 3);
+			select * from rental_history;		
+		INSERT INTO media
+			VALUES (media_id_seq.nextval, upper('dvd'), 4);
+		INSERT INTO media
+			VALUES (media_id_seq.nextval, upper('vhs'), 4);
+			select * from rental_history;		
+		INSERT INTO media
+			VALUES (media_id_seq.nextval, upper('dvd'), 5);
+		INSERT INTO media
+			VALUES (media_id_seq.nextval, upper('vhs'), 5);
+			select * from rental_history;		
+		INSERT INTO media
+			VALUES (media_id_seq.nextval, upper('dvd'), 6);
+		INSERT INTO media
+			VALUES (media_id_seq.nextval, upper('vhs'), 6);
+			select * from rental_history;
+	
+	--DATOS DE RENTAL_HISTORY
+		INSERT INTO rental_history
+			VALUES (92,'19-SEP-10', 101, '20-SEP-10' );
+		INSERT INTO rental_history
+			VALUES (99,default, 102, null );
+		INSERT INTO rental_history
+			VALUES (95,default, 104, '30-OCT-22' );
+		INSERT INTO rental_history
+			VALUES (101,default, 105, '16-NOV-22' );
+
+	--DATOS DE ACTORS
+		insert into actors
+			values (actor_id_seq.nextval, 'Brad Pitt', 'William', 'Pitt', '18-DEC-1963');
+		insert into actors
+			values (actor_id_seq.nextval, 'Black Adam', 'Johnsonm', 'Dwayne', '02-MAY-1972');
+		insert into actors
+			values (actor_id_seq.nextval, 'Pennyworth', 'Bannon', 'Jack', '24-MAR-91');
+		insert into actors
+			values (actor_id_seq.nextval, 'Sandman', 'Jerome', 'Thomas', '21-DEC-85');
+		insert into actors
+			values (actor_id_seq.nextval, 'Remember the Titans', 'Gosling', 'Ryan ', '12-NOV-80');
+
+	--DATOS DE STAR_BILLINGS
+		insert into star_billings
+			values (1005, 1 ,'Action lead');
+
+		insert into star_billings
+			values (1002, 2 ,'The best fights');
+
+		insert into star_billings
+			values (1003, 3 ,'Shocking');
+
+		insert into star_billings
+			values (1004, 5 ,'Exciting');
+
+--CREATE VIEW
+	--VIEW TITLE_UNAVAIL
+		CREATE OR REPLACE VIEW TITLE_UNAVAIL
+		AS
+		SELECT M.title TITLE, s.media_id "MEDIA"
+		FROM media s inner join movies M on M.title_id=s.title_id 
+				 inner join rental_history r on s.media_id = r.media_id
+		WHERE r.return_date is null
+		WITH READ ONLY;
+
+
+--CREATE INDEX
+	--INDEX LAST_NAME_IDX
+		CREATE INDEX last_name_idx
+ 		ON customers (last_name);
+
+--CREATE SYNONYM
+	--SYNONYM TU
+		CREATE SYNONYM TU FOR TITLE_UNAVAIL;

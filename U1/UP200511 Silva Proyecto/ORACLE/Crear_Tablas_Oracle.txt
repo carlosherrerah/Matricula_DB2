@@ -1,0 +1,64 @@
+--CREACION DE TABLAS
+	--CUSTOMERS
+		CREATE TABLE customers 
+ 			(customer_id NUMBER(10)NOT NULL ENABLE,
+			last_name VARCHAR2(25) NOT NULL ENABLE, 
+			first_name VARCHAR2(25) NOT NULL ENABLE, 
+			home_phone VARCHAR2(12) NOT NULL ENABLE, 
+			address VARCHAR2(100) NOT NULL ENABLE, 
+			city VARCHAR2(30) NOT NULL ENABLE, 
+			state VARCHAR2(2) NOT NULL ENABLE, 
+			email VARCHAR2(25), 
+			cell_phone VARCHAR2(12),
+			CONSTRAINT customer_id_pk PRIMARY KEY (customer_id));
+	
+	--MOVIES
+		CREATE TABLE movies 
+			(title_id NUMBER(10)NOT NULL ENABLE,
+			title VARCHAR2(60) NOT NULL ENABLE, 
+			description VARCHAR2(400) NOT NULL ENABLE, 
+			rating VARCHAR2(4) , 
+			category VARCHAR2(20) , 
+			release_date date NOT NULL ENABLE,
+			CONSTRAINT title_id_pk PRIMARY KEY (title_id),
+            	CONSTRAINT movies_rating CHECK (rating IN ('G', 'PG','R','PG13')),
+            	CONSTRAINT movies_category CHECK (category IN ('DRAMA', 'COMEDY', 'ACTION', 'CHILD', 'SCIFI', 'DOCUMENTARY')));
+
+	--MEDIA
+		CREATE TABLE media 
+   			(media_id NUMBER(10)NOT NULL ENABLE, 
+    			format VARCHAR2(3) NOT NULL ENABLE, 
+    			title_id NUMBER(10) NOT NULL ENABLE,
+                  CONSTRAINT media_id_pk PRIMARY KEY (media_id),
+                  CONSTRAINT media_title_id_fk FOREIGN KEY (title_id)
+                  	REFERENCES movies(title_id));
+
+	--RENTAL_HISTORY
+		CREATE TABLE rental_history 
+    			(media_id NUMBER(10)NOT NULL ENABLE, 
+                  rental_date DATE DEFAULT sysdate NOT NULL ENABLE, 
+    			customer_id NUMBER(10)NOT NULL ENABLE, 
+    			return_date DATE,
+                  CONSTRAINT media_id_fk FOREIGN KEY (media_id)
+                  	REFERENCES media(media_id),
+                  CONSTRAINT customer_id_fk FOREIGN KEY (customer_id)
+                  	REFERENCES customers(customer_id),
+    			CONSTRAINT rental_history_pk PRIMARY KEY(media_id, rental_date));
+	--ACTORS
+		CREATE TABLE actors (actor_id NUMBER(10)NOT NULL ENABLE, 
+    			stage_name VARCHAR2(40) NOT NULL ENABLE, 
+    			last_name VARCHAR2(25) NOT NULL ENABLE, 
+    			first_name VARCHAR2(25) NOT NULL ENABLE, 
+    			birth_date date NOT NULL ENABLE,
+    			CONSTRAINT actor_id_pk PRIMARY KEY(actor_id));
+
+	--STAR_BILLINGS
+		CREATE TABLE star_billings 
+			(actor_id NUMBER(10)NOT NULL ENABLE, 
+			title_id NUMBER(10)NOT NULL ENABLE, 
+			comments VARCHAR2(40),
+        		CONSTRAINT actor_id_fk FOREIGN KEY (actor_id)
+            		REFERENCES actors(actor_id),
+        		CONSTRAINT title_id_fk FOREIGN KEY (title_id)
+            		REFERENCES movies(title_id),
+			CONSTRAINT star_billings_pk PRIMARY KEY (actor_id, title_id));
